@@ -9,10 +9,41 @@ const Client = require('instagram-private-api').V1;
 const delay = require('delay');
 const chalk = require('chalk');
 
-var User = {
-    username: '',
-    password: ''
-}
+
+const User = [
+	{
+		type:'input',
+		name:'username',
+		message:'Insert Username'
+	},
+	{
+		type:'password',
+		name:'password',
+		message:'Insert Password',
+		mask:'*'
+	},
+	
+
+
+
+	
+	
+
+
+
+
+	{
+		type:'input',
+		name:'sleep',
+		message:'Insert Sleep (In MiliSeconds)',
+		validate: function(value){
+			value = value.match(/[0-9]/);
+			if (value) return true;
+			return 'Delay is number';
+		}
+	}
+]
+
 
 const onlyUnique = async function(value, index, self) { 
     return self.indexOf(value) === index;
